@@ -30,10 +30,13 @@ class MoviesTable extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  movies: state.movies.items,
-  loading: state.movies.loading,
-  error: state.movies.error
-});
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    movies: state.movies.items,
+    loading: state.movies.loading,
+    error: state.movies.error,
+  }
+};
 
 export default connect(mapStateToProps)(MoviesTable);
