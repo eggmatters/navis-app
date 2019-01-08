@@ -1,8 +1,10 @@
 const apiKey = '057dfa32a18eed0f2dc23dc2e80ed8a0';
-const urlBase = 'https://api.themoviedb.org/3/search/movie/';
+//const urlBase = 'https://api.themoviedb.org/3/search/movie/';
+const urlBase = 'http://localhost:3001/'
 
 let url = null;
 let queryString = null;
+
 
 export const FETCH_MOVIES_BEGIN   = 'FETCH_MOVIES_BEGIN';
 export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
@@ -29,6 +31,17 @@ export const fetchMovies = searchString => {
   return dispatch => {
     dispatch(fetchMoviesBegin());
     return fetch(url)
+      // .then(response => {
+      //   console.log(response);
+      //   return response;
+      // })
+      // .then((data) => {
+      //   console.log(data);
+      //   //handleErrors(data);
+      //   //resolve(data ? JSON.parse(data) : {});
+      //   dispatch(fetchMoviesSuccess(JSON.parse(data)));
+      // })
+      //.catch((error) => dispatch(fetchMoviesFailure(error)));
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

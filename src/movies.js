@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchMovies } from './actions';
 
 class MoviesTable extends React.Component {
   componentDidMount() {

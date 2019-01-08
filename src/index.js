@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Search from './search';
 import MoviesTable from './movies';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -16,6 +17,7 @@ const store = createStore(
 function App() {
   return (
     <div className="App">
+      <Search />
       <MoviesTable />
     </div>
   );
