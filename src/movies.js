@@ -17,6 +17,8 @@ class MoviesTable extends React.Component {
       return <div>Loading...</div>;
     }
 
+    let meh = JSON.stringify(movies);
+
     return (
       // <ul>
       //   {movies.map(movie =>
@@ -24,7 +26,7 @@ class MoviesTable extends React.Component {
       //   )}
       // </ul>
       <div>
-        <pre>{movies}</pre>
+        <pre>{meh}</pre>
       </div>
     );
   }
@@ -33,7 +35,7 @@ class MoviesTable extends React.Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    movies: state.movies.items,
+    movies: state.movies.movies,
     loading: state.movies.loading,
     error: state.movies.error,
   }
