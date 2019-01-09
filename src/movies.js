@@ -30,10 +30,10 @@ class MoviesTable extends React.Component {
 
     return (
       <div>
-        <table>
+        <table className="table table-bordered">
           <thead>
             <tr>
-              <th>Title</th><th>Release Date</th><th>Description</th>
+              <th>Title</th><th width="120px">Release Date</th><th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -48,7 +48,6 @@ class MoviesTable extends React.Component {
 };
 
 const MovieRow = (props) => {
-  console.log(props);
   return (
     <tr>
       <td>{props.title || ""}</td>

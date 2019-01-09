@@ -24,16 +24,18 @@ class Search extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div className="input-group mb-3">
       <input
         type="text"
+        className="form-control"
         name="searchString"
         placeholder="Enter search terms here..."
         value={ this.state.searchString }
         onChange={ this.handleChange }
       />
-
-      <button value={ "" } onClick={ this.publish } >Search</button>
+      <div className="input-group-append">
+        <button value={ "" } onClick={this.publish} className="btn btn-outline-secondary" >Search</button>
+      </div>
     </div>
   }
 }
@@ -45,4 +47,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Search);
-//export default connect()(Search);
