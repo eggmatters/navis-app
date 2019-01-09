@@ -6,6 +6,15 @@ class MoviesTable extends React.Component {
     //this.props.dispatch(fetchMoviesBegin());
   }
 
+  renderRow(rowData) {
+    return <MovieRow
+      key = {rowData.id}
+      title = {rowData.title}
+      release_date = {rowData.release_date}
+      overview = {rowData.overview}
+    />;
+  }
+
   render() {
     const { error, loading, movies } = this.props;
 
@@ -17,23 +26,40 @@ class MoviesTable extends React.Component {
       return <div>Loading...</div>;
     }
 
-    let meh = JSON.stringify(movies);
+    const rawTableData = (typeof movies.movies.results === 'undefined') ? [] : movies.movies.results;
 
     return (
-      // <ul>
-      //   {movies.map(movie =>
-      //     <li key={>movie</li>
-      //   )}
-      // </ul>
       <div>
-        <pre>{meh}</pre>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th><th>Release Date</th><th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rawTableData.map( rowData => {
+              return this.renderRow(rowData);
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }
+};
+
+const MovieRow = (props) => {
+  console.log(props);
+  return (
+    <tr>
+      <td>{props.title || ""}</td>
+      <td>{props.release_date || ""}</td>
+      <td>{props.overview || ""}</td>
+     </tr>
+  );
 }
 
+
 const mapStateToProps = state => {
-  console.log(state);
   return {
     movies: state.movies.movies,
     loading: state.movies.loading,
